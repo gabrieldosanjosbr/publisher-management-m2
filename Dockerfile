@@ -103,6 +103,4 @@ ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 WORKDIR /var/www/html
 
-RUN composer install --ignore-platform-reqs
-
 CMD ["php-fpm"]
