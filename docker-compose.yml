@@ -39,6 +39,7 @@ services:
     volumes:
       - php_socket:/var/run/php
       - ./:/var/www/html:rw
+      - ./auth.json:/usr/local/composer/auth.json
       - ./.docker/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/bookstore.conf
       - ./.docker/php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
     networks:
