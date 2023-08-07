@@ -5,7 +5,7 @@ Publisher Manager
 
 ## Features
 
-- List/Create/Delete/Update Publisher
+- Publisher List/Create/Delete/Update
 - Assign Product to Publisher
 - Publisher Logo Upload
 
