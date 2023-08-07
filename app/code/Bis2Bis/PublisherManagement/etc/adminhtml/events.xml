@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="bis2bis_publishermanagement_publisher_deleted_after">
+        <observer name="bis2bis_publishermanagement_publisher_delete_logo_observer" instance="Bis2Bis\PublisherManagement\Observer\Publisher\DeleteLogo" />
+    </event>
+    <event name="bis2bis_publishermanagement_publisher_created_before">
+        <observer name="bis2bis_publishermanagement_publisher_save_logo_observer" instance="Bis2Bis\PublisherManagement\Observer\Publisher\SaveLogo" />
+    </event>
+</config>

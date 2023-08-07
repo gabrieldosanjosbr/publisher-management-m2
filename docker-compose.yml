@@ -1,0 +1,70 @@
+version: "2.2"
+
+services:
+
+  nginx:
+    image: nginx:1.12.1
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html:rw
+      - ./.docker/nginx/bookstore.conf:/etc/nginx/conf.d/bookstore.conf
+    networks:
+      magento2:
+        aliases:
+          - bis2bis.bookstore
+
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_DATABASE: magento2
+      MYSQL_USER: bis2bis
+      MYSQL_PASSWORD: 123123
+    volumes:
+      - ./.docker/mariadb/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - magento2
+
+  php:
+    build:
+      context: .
+      network: host
+    restart: unless-stopped
+    environment:
+      COMPOSER_HOME: /usr/local/composer
+    volumes:
+      - php_socket:/var/run/php
+      - ./:/var/www/html:rw
+      - ./.docker/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/bookstore.conf
+      - ./.docker/php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
+    networks:
+      - magento2
+
+  opensearch:
+    hostname: opensearch.magento2.docker
+    image: 'magento/magento-cloud-docker-opensearch:2.4-1.3.5'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    environment:
+      - cluster.name=docker-cluster
+      - discovery.type=single-node
+      - discovery.seed_hosts=opensearch
+      - bootstrap.memory_lock=true
+      - DISABLE_SECURITY_PLUGIN=true
+    networks:
+      magento2:
+        aliases:
+          - opensearch.bis2bis.bookstore
+
+volumes:
+  php_socket:
+
+networks:
+  magento2:
+    driver: bridge

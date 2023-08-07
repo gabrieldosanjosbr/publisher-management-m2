@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Bis2Bis_PublisherManagement::publisher" title="Publishers" action="bis2bis/publisher" module="Bis2Bis_PublisherManagement" sortOrder="21" parent="Magento_Catalog::catalog" resource="Bis2Bis_PublisherManagement::publisher"/>
+    </menu>
+</config>
