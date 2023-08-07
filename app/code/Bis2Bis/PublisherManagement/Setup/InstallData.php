@@ -25,7 +25,7 @@ class InstallData implements InstallDataInterface
                 'name' => 'Companhia da Letras',
                 'status' => 1,
                 'address' => 'Rua Bandeira Paulista, 702, cj. 32',
-                'logo' => 'utamMDOqqz.jpeg',
+                'logo' => null,
                 'cnpj' => '55.789.390/0001-12'
             ]
         );
@@ -36,7 +36,7 @@ class InstallData implements InstallDataInterface
                 'name' => 'Aleph',
                 'status' => 1,
                 'address' => 'Rua Tabapuã, nº 81, Conj. 134, Itaim Bibi, São Paulo/SP',
-                'logo' => 'vjoOanwEpA.jpeg',
+                'logo' => null,
                 'cnpj' => '53.523.551/0001-04'
             ]
         );
